@@ -1,0 +1,127 @@
+/* レイアウトの幅・余白 */
+.company {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+  padding: clamp(12px, 2vw, 24px) 0;
+}
+
+/* 上段2カラム */
+.company__top {
+  display: grid;
+  grid-template-columns: 1fr 120px 1fr;
+  gap: clamp(12px, 2vw, 24px);
+  margin: 12px 0 20px;
+}
+@media (max-width: 720px) {
+  .company__top { grid-template-columns: 1fr; }
+}
+
+/* セクションタイトル */
+.company__title {
+  margin: 0 0 8px;
+  font-size: clamp(16px, 2.2vw, 18px);
+  color: var(--textBase);
+  font-weight: 800;
+}
+
+/* 入力+ボタン一列 */
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* 入力 */
+.input {
+  flex: 1 1 auto;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--panel-strong);
+  background: #fff;
+  color: var(--textBase);
+  font-size: 14px;
+}
+
+/* データカード（角丸/影は .mainObject を使用） */
+.data-card.mainObject {
+  display: block !important;         /* ボタン用の inline-flex を打消し */
+  white-space: normal !important;
+  padding: clamp(12px, 2vw, 18px);
+  border-radius: 18px;
+}
+
+/* テーブル */
+.grid {
+  width: 100%;
+  border-collapse: separate;          /* 外枠角丸を見せるため separate */
+  border-spacing: 0;
+  font-size: clamp(14px, 1.9vw, 16px);
+  color: var(--textBase);
+}
+
+/* ヘッダー行：淡い帯、角丸 */
+.grid thead th {
+  background: #FFF3E0;                /* 画像の淡いクリーム色 */
+  border-top: 1px solid var(--panel-strong);
+  border-bottom: 1px solid var(--panel-strong);
+  padding: 14px 12px;
+  text-align: center;
+  font-weight: 800;
+}
+.grid thead th:first-child {
+  border-left: 1px solid var(--panel-strong);
+  border-top-left-radius: 24px;
+}
+.grid thead th:last-child {
+  border-right: 1px solid var(--panel-strong);
+  border-top-right-radius: 24px;
+}
+
+/* 明細行 */
+.grid tbody td {
+  background: #fff;
+  padding: 18px 12px;
+  border-bottom: 1px solid var(--panel-strong);
+  text-align: center;
+}
+.grid tbody tr:last-child td {
+  border-bottom: 1px solid var(--panel-strong);
+}
+
+/* テーブル外枠の角丸（下側） */
+.grid tbody tr:last-child td:first-child { border-left: 1px solid var(--panel-strong); border-bottom-left-radius: 24px; }
+.grid tbody tr:last-child td:last-child  { border-right: 1px solid var(--panel-strong); border-bottom-right-radius: 24px; }
+/* 中間行の左右線 */
+.grid tbody td:first-child { border-left: 1px solid var(--panel-strong); }
+.grid tbody td:last-child  { border-right: 1px solid var(--panel-strong); }
+
+/* 列幅の目安 */
+.col-id   { width: 16%; }
+.col-name { width: auto; text-align: left !important; padding-left: 24px !important; }
+.col-edit { width: 12%; }
+.col-del  { width: 12%; }
+
+/* アクションアイコン */
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+/* .action:hover { background: var(--accent, #eac7a4); } */
+.action i { font-size: 20px; color: var(--textBase); }
+
+/* 下部のTOPボタン（フッター内）に被らないように main に余白 */
+.company { padding-bottom: calc(var(--footer-h, 56px) + 24px); }
+
+/* 保存ボタン専用デザイン */
+button.action.wide {
+  min-width: 60px;   /* 横幅を広めに */
+  height: auto;      /* 高さ制御を解除 */
+  padding: 4px 10px; /* テキストに合う余白 */
+  font-weight: bold; /* 強調したい場合 */
+}

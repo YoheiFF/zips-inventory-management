@@ -1,0 +1,140 @@
+/* ===== reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== body ===== */
+body {
+  font-family: sans-serif;
+  background-color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: var(--textBase);
+}
+
+/* ===== container ===== */
+.login-container {
+  background: var(--bodyObjectBase);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 500px;
+  padding: 60px 60px;
+  border: 1px solid var(--border);
+  min-height: 520px;
+}
+
+/* ===== header ===== */
+.login-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-header h1 {
+  font-size: 24px;
+  color: var(--textBase);
+  margin-bottom: 6px;
+}
+
+.login-header p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ===== form ===== */
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--textBase);
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  background-color: var(--white);
+  color: var(--textBase);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent-strong);
+  background-color: #fff;
+}
+
+/* ===== button ===== */
+.login-btn {
+  width: 100%;
+  height: 44px;
+  margin-top: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: var(--footerBtn);
+  color: var(--textBase);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  transition: transform .1s ease, box-shadow .2s ease, background-color .2s;
+}
+
+.login-btn:hover {
+  background-color: var(--accent-strong);
+  box-shadow: 0 6px 12px rgba(0,0,0,.15);
+  transform: translateY(-2px);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+/* ===== error ===== */
+.error-message {
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  font-size: 13px;
+  border-radius: var(--radius-md);
+  background-color: #f6d6d6;
+  color: #7a2f2f;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* ===== loading ===== */
+.loading {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid rgba(0,0,0,.15);
+  border-top-color: rgba(0,0,0,.6);
+  border-radius: 50%;
+  animation: spin .9s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

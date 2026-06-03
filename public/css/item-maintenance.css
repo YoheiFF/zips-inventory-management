@@ -1,0 +1,163 @@
+/* レイアウトの幅・余白 */
+.item {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+  padding: clamp(12px, 2vw, 24px) 0;
+  padding-bottom: calc(var(--footer-h, 56px) + 24px); /* フッター回避 */
+}
+
+/* item-maintenance: 上部（検索＋新規登録）を横並びにして右寄せ */
+.item__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap; /* 狭い画面では折り返す */
+  margin: 12px 0 20px;
+}
+
+/* 検索部を伸長させる */
+.item__search {
+  flex: 1 1 auto;
+  min-width: 240px;
+}
+
+/* 検索行の中で input と絞り込みボタンを横並びにする */
+.item__search .row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* 新規作成ボタンは右端に固定（必要なら幅固定）*/
+.item__create {
+  flex: 0 0 auto;
+}
+
+/* セクションタイトル */
+.item__title {
+  margin: 0 0 8px;
+  font-size: clamp(16px, 2.2vw, 18px);
+  color: var(--textBase);
+  font-weight: 800;
+}
+
+/* 入力 */
+.input {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 200px; /* ← ここで最大幅を指定（必要に応じて調整） */
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid;
+  background: #fff;
+  color: var(--textBase);
+  font-size: 14px;
+}
+
+/* データカード（角丸/影は .mainObject を使用） */
+.data-card.mainObject {
+  display: block !important;
+  white-space: normal !important;
+  padding: clamp(12px, 2vw, 18px);
+  border-radius: 18px;
+}
+
+/* テーブル */
+.grid {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: clamp(14px, 1.9vw, 16px);
+  color: var(--textBase);
+}
+
+/* ヘッダー行：淡い帯、角丸 */
+.grid thead th {
+  background: #FFF3E0;
+  border-top: 1px solid var(--panel-strong);
+  border-bottom: 1px solid var(--panel-strong);
+  padding: 14px 12px;
+  text-align: center;
+  font-weight: 800;
+}
+.grid thead th:first-child {
+  border-left: 1px solid var(--panel-strong);
+  border-top-left-radius: 24px;
+}
+.grid thead th:last-child {
+  border-right: 1px solid var(--panel-strong);
+  border-top-right-radius: 24px;
+}
+
+/* 明細行 */
+.grid tbody td {
+  background: #fff;
+  padding: 18px 12px;
+  border-bottom: 1px solid var(--panel-strong);
+  text-align: center;
+}
+.grid tbody tr:last-child td {
+  border-bottom: 1px solid var(--panel-strong);
+}
+
+/* 商品画像のサムネイル用 */
+.thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* テーブル外枠の角丸（下側） */
+.grid tbody tr:last-child td:first-child {
+  border-left: 1px solid var(--panel-strong);
+  border-bottom-left-radius: 24px;
+}
+.grid tbody tr:last-child td:last-child {
+  border-right: 1px solid var(--panel-strong);
+  border-bottom-right-radius: 24px;
+}
+/* 中間行の左右線 */
+.grid tbody td:first-child { border-left: 1px solid var(--panel-strong); }
+.grid tbody td:last-child  { border-right: 1px solid var(--panel-strong); }
+
+/* 列幅の目安 */
+.col-id   { width: 16%; }
+.col-name { width: auto; text-align: left !important; padding-left: 24px !important; }
+.col-edit { width: 12%; }
+.col-del  { width: 12%; }
+
+/* アクションアイコン */
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.action i { font-size: 20px; color: var(--textBase); }
+
+/* 保存ボタン専用デザイン */
+button.action.wide {
+  min-width: 60px;
+  height: auto;
+  padding: 4px 10px;
+  font-weight: bold;
+}
+
+/* 小画面調整 */
+@media (max-width: 640px) {
+  .item__top { align-items: stretch; }
+  .item__create {
+    width: 100%;
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .item__search .row { width: 100%; }
+  .item__search .row .input { flex: 1 1 auto; }
+}

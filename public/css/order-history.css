@@ -1,0 +1,71 @@
+/* ==== Header ==== */
+.history__head {
+  display: grid;
+  /* grid-template-columns: 300px 1fr 90px 60px; */
+  grid-template-columns: 1fr 4fr 1fr 1fr;
+  align-items: center;
+  justify-items: center; 
+  font-weight: 700;
+  padding: 12px 14px 6px;
+  font-size: 1.1rem;
+}
+
+/* 共通セル */
+.history__col {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+}
+
+/* 左側の視覚バランス調整が必要な場合に使う（任意） */
+.history__col--left {
+  opacity: 0;
+}
+
+/* ==== Row (1レコード) ==== */
+.history__row {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr 1fr; /* ← 同じ固定幅を適用 */
+  align-items: center;
+  justify-items: center; 
+  gap: 10px;
+  padding: 14px;
+  background-color: var(--bodyObjectBase);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 10px);
+  margin: 10px 6px 14px;
+}
+
+/* 各カラムの役割（JSの出力クラスに対応） */
+.history__col--orderDate { /* 日時（JST） */
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.history__col--pdfName a.history__pdfLink {
+  text-decoration: underline;
+  word-break: break-all;
+}
+.history__col--orderUser {
+  justify-content: flex-start;
+}
+.history__col--orderPieces {
+  justify-content: flex-end;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 空／エラー表示 */
+.history__row--empty,
+.history__row--error {
+  display: block;
+  padding: 16px;
+  background: var(--bodyObjectBase);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md, 10px);
+  margin: 10px 6px 14px;
+  color: var(--textSecondary);
+}
+.history__pdfName--none {
+  opacity: .6;
+}

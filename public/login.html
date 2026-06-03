@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ログイン - Art The Line 在庫管理システム</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="icon" href="img/logo.png" type="image/png">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <img src="img/logo.png" alt="Zips" style="max-width:240px; margin-bottom:8px;">
+      <p>在庫管理システム</p>
+    </div>
+
+    <form id="loginForm">
+      <div class="error-message" id="errorMessage"></div>
+
+      <div class="form-group">
+        <label for="username">ユーザー名</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="ユーザー名を入力してください"
+          autocomplete="username"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">パスワード</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="パスワードを入力してください"
+          autocomplete="current-password"
+        >
+      </div>
+
+      <button type="submit" class="login-btn">ログイン</button>
+    </form>
+
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const errorMessage = document.getElementById('errorMessage');
+    const loading = document.getElementById('loading');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+
+    // エラーメッセージをクリア
+    [usernameInput, passwordInput].forEach(input => {
+      input.addEventListener('focus', () => {
+        errorMessage.classList.remove('show');
+      });
+    });
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorMessage.classList.remove('show');
+      loading.style.display = 'block';
+      loginForm.style.display = 'none';
+
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value;
+
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        });
+
+        if (response.ok) {
+          // ログイン成功
+          window.location.href = '/top.html';
+        } else {
+          const error = await response.json();
+          showError(error.message || 'ログインに失敗しました');
+        }
+      } catch (err) {
+        showError('ネットワークエラーが発生しました');
+        console.error('Login error:', err);
+      } finally {
+        loading.style.display = 'none';
+        loginForm.style.display = 'block';
+      }
+    });
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.classList.add('show');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+# 依存パッケージ
+node_modules/
+
+# 環境変数（機密情報）
+.env
+.env.production
+.env.local
+
+# .env.example はコミット対象（キー一覧テンプレート）
+
+# MySQLデータディレクトリ（Dockerボリューム）
+mysql-data/
+
+# 生成ファイル
+public/pdf/
+public/uploads/
+
+# テスト用画像
+public/img/test/
+
+# バックアップ
+backup/
+
+# ログ
+*.log
+npm-debug.log*
+
+# OS生成ファイル
+.DS_Store
+Thumbs.db
+
+# エディタ設定
+.vscode/
+.idea/
+
+# プロジェクト管理・設計書（機密情報を含む可能性があるためGit管理外）
+.project/

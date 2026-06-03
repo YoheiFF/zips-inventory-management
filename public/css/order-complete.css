@@ -1,0 +1,63 @@
+/* 画面全体の余白（フッターと重ならないように） */
+.complete { padding: 16px 4%; }
+@media (min-width: 1024px){ .complete { padding: 20px 6%; } }
+
+/* ====== 中央寄せ（1カラム固定） ====== */
+.complete-grid{
+  display: flex;
+  justify-content: center;              /* 横方向センター */
+  align-items: center;                  /* 縦方向センター */
+  margin: 24px auto;
+  padding: 24px 16px;
+}
+
+/* 共通パネル（中央のカード） */
+.panel {
+  /* 色や装飾のみを定義 */
+  background-color: var(--bodyObjectBase);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 10px);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  color: var(--textBase);
+  text-align: center;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
+    /* ▼幅を可変に：最小360px、理想は画面の70%、最大960px */
+  width:clamp(360px, 70vw, 960px);
+  /* ▼内側余白も可変：16〜36px の範囲で自動調整 */
+  padding:clamp(16px, 3vw, 36px);
+  /* ▼角丸も画面に応じて少し変化 */
+  border-radius:clamp(12px, 2vw, 24px);
+}
+
+/* 備考 */
+.note{
+  margin-top: 18px;
+  font-size: .95rem;
+}
+
+/* パネルの文言 */
+.msg-leading{
+  font-weight: 700;
+  line-height: 1.9;
+  text-align: center;
+  margin: 12px 0 22px;
+}
+
+/* PDFリンク行 */
+.pdf-line {
+  margin: 120px 0;   /* 上下に24px、左右は0 */
+  text-align: center;
+}
+.pdf-link{
+  color: #1a57b8;
+  text-decoration: underline;
+  font-weight: 800;
+  font-size: 1.05rem;
+  word-break: break-all;
+}
+.item-name{ color: var(--textBase); }
+.item-qty{ font-weight: 700; }

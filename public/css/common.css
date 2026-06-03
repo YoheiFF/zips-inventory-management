@@ -1,0 +1,358 @@
+:root {
+    /* 既存ページに近い暖色系トーン */
+    --Base: #D6CFC2;
+    --bodyBase: #EEEBE4;
+    --textBase: #5C4B3B;
+    --buttonBase: #D6A97A;
+    --bodyObjectBase: #FFF9F0;
+    --footerBtn: #F2E8DC;
+    --border: #DDD2C0;
+    --bg: #efe4d6;
+    --panel-strong: #e9dfd2;
+    --text: #52463d;
+    --muted: #8b7d71;
+    --accent: #eac7a4;
+    /* 見出し帯・ボタン背景 */
+    --accent-strong: #d8b28c;
+    --pill: #edd2b6;
+    /* 数量丸ボタンの背景 */
+    --white: #ffffff;
+    --radius-xl: 16px;
+    --radius-lg: 12px;
+    --radius-md: 10px;
+    --shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    --footer-h: 100px;
+    /* フッターの高さ（調整可） */
+}
+
+/* メインボタン */
+.mainBtn {
+    /* 色や装飾のみを定義 */
+    background-color: var(--bodyObjectBase);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 10px);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    color: var(--textBase, #5C4B3B);
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+/* ホバー時 */
+.mainBtn:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.btn--footer:hover {
+    background-color: var(--accent-strong);
+}
+
+
+/* ページ全体の基本スタイル */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: root(--bodyBase);
+    padding-bottom: calc(var(--footer-h) + 16px);
+}
+
+main {
+    padding-bottom: calc(var(--footer-h) + 16px);
+    max-width: 1200px;
+    margin: 16px auto 32px;
+    padding: 0 16px;
+    color: var(--textBase, #5C4B3B);
+}
+
+/* 左上ロゴ画像のサイズ調整 */
+.logo-icon {
+    height: 3em;
+    /* テキストと合わせた高さ */
+    width: auto;
+    /* アスペクト比維持 */
+    display: block;
+}
+
+/* ヘッダー全体の固定配置とスタイル */
+.main-header {
+    position: sticky;
+    /* スクロールしても上部に固定 */
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    font-family: sans-serif;
+    align-items: center;
+    background-color: var(--Base);
+    padding: 10px 20px;
+    z-index: 1000;
+    /* 他の要素より前に表示 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* 軽い影 */
+    position: relative; /* 追加：タイトルを絶対配置で中央に合わせる基準にする */
+}
+
+/* ヘッダー左右のアイコン配置調整 */
+.header-left,
+.header-right {
+    flex-shrink: 0;
+    /* 縮小を防ぐ */
+    z-index: 2; /* 追加：タイトルの上に出るようにする */
+}
+
+/* ユーザー名のスタイル */
+.user-name {
+    margin-right: 10px;
+    font-size: 1.2em;
+    color: var(--textBase);
+    font-weight: normal;
+}
+
+/* ヘッダー中央のタイトルのスタイル */
+.header-title {
+    font-size: 1.5em;
+    color: var(--textBase);
+    font-weight: bold;
+    text-align: center;
+
+    /* 中央寄せを画面幅基準に安定させる */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    /* 左右のアイコンと被らないように最大幅を確保 */
+    max-width: calc(100% - 220px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* フッター */
+.main-footer {
+    position: fixed;
+    /* 画面に固定 */
+    bottom: 0;
+    /* 下端に配置 */
+    left: 0;
+    width: 100%;
+    /* 横幅いっぱい */
+    height: var(--footer-h);
+    /* 高さは変数で調整 */
+    background: var(--Base);
+    /* 共通色を流用 */
+    color: var(--textBase);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .9em;
+    border-top: 1px solid var(--border, #ccc);
+    /* 固定要素に margin-top は効かないので削除 */
+    z-index: 100;
+    /* 浮遊ボタン(998)より下にしたいなら小さめでもOK */
+}
+
+/* フッターとかぶらないように設定 */
+.cart-button {
+    bottom: calc(80px + var(--footer-h));
+}
+
+.back-to-top {
+    bottom: calc(20px + var(--footer-h));
+}
+
+/* アイコンボタン共通スタイル */
+.icon-button {
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: root(--textBase);
+    cursor: pointer;
+}
+
+/* Chromeでスクロールバーを非表示に */
+.category-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+/* トップへ戻るボタンの固定位置とスタイル */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    background-color: #F2D1B3;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+/* トップへ戻るボタンにマウスを乗せたときの効果 */
+.back-to-top:hover {
+    opacity: 0.8;
+}
+
+.cart-button {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 998;
+    width: 48px;
+    height: 48px;
+    background-color: #D6A97A;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    padding: 0;
+}
+
+.cart-count-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: red;
+    color: white;
+    font-size: 0.7em;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    line-height: 1;
+    min-width: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.cart-button i {
+    font-size: 1.5em;
+    /* ← アイコン自体のサイズを明示 */
+    color: white;
+}
+
+/* カートボタンにマウスを乗せたときの効果 */
+.cart-button:hover {
+    opacity: 0.8;
+}
+
+/* 下部「TOPへ」ボタン */
+.footerBtn-wrap {
+    margin: 10px 0 6px;
+}
+
+.footer-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 12px;
+    background: var(--footerBtn);
+    border: none;
+    /* 仕様ボタン色 */
+    color: var(--textBase);
+    text-decoration: none;
+    font-weight: 800;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+}
+
+.footer-btn:hover {
+    opacity: .9;
+}
+
+/* 削除ボタン用（塗りつぶしなし、下線あり） */
+.footer-btn#btnDelete,
+#btnDelete.footer-btn {
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--textBase);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  min-width: 120px; /* 他のフッターボタンと横幅を揃える場合は保持 */
+  height: 48px;
+  padding: 0 20px;
+}
+
+/* 共通ボタン */
+.btn {
+  --h: 38px;
+  --px: 14px;
+  --radius: 10px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: var(--h);
+  padding: 0 var(--px);
+  border-radius: var(--radius);
+  border: 1px solid var(--border, #ddd2c0);
+  background: var(--bodyObjectBase, #fff);
+  color: var(--textBase, #4a4a4a);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 1px 0 rgba(0,0,0,.04);
+  transition: transform .02s ease, background-color .2s, border-color .2s, color .2s;
+}
+.btn:hover  { background: #faf7f2; }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 2px solid #c9b59c; outline-offset: 2px; }
+.btn:disabled { opacity: .55; cursor: not-allowed; pointer-events: none; }
+
+.btn--sm { --h: 32px; --px: 10px; font-size: 13px; }
+.btn--lg { --h: 44px; --px: 16px; font-size: 15px; }
+
+.btn i { line-height: 0; font-size: 1.1em; }
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  display: none;            /* 通常は非表示 */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* 表示状態 */
+.loading-overlay.is-active {
+  display: flex;
+}
+
+/* Spinner */
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 6px solid rgba(0, 0, 0, 0.15);
+  border-top-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>発注画面</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/salon-order.css">
+  <link rel="stylesheet" href="css/common.css"> 
+  <link rel="icon" href="img/art_the_line_logo.png">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/salon-order.js"></script>
+</head>
+
+<body>
+
+<!-- 共通ヘッダーの読み込み -->
+<div id="header-container"></div>
+<!-- カテゴリをDBより取得し表示 -->
+<div id="category-tabs" class="category-tabs"></div>
+
+<main>
+<!-- 商品一覧を取得し表示 -->
+<div id="items-container" class="items-container"></div>
+<button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
+<button class="cart-button" onclick="location.href='cart.html'">
+  <i class="bi bi-cart3"></i>
+  <span class="cart-count-badge">0</span>
+</button>
+</main>
+
+  <footer class="main-footer">
+        <div class="footerBtn-wrap">
+      <a class="footer-btn" href="top.html">TOPへ</a>
+    </div>
+  </footer>
+  <script src="js/load-header.js"></script>
+</body>
+
+</html>

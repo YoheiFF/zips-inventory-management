@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: zips-mysql-prod
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: zips_root_pass_prod
+      MYSQL_DATABASE: Zips
+      MYSQL_USER: zips_app
+      MYSQL_PASSWORD: zips_pass_prod
+      TZ: Asia/Tokyo
+    ports:
+      - "3309:3306"
+    volumes:
+      - ~/zips-mysql-data:/var/lib/mysql
+      - ./mysql-init/01_init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+    command: ["--default-authentication-plugin=mysql_native_password"]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pzips_root_pass_prod"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

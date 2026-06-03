@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>発注履歴一覧画面</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- 共通を先に読み込み、ページCSSを後で上書き -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/order-history.css" />
+  <link rel="icon" href="img/art_the_line_logo.png">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/order-history.js"></script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+
+  <main class="main">
+    <section class="history">
+      <div class="history__head">
+        <span class="history__col history__col--orderDate">発注日</span>
+        <span class="history__col history__col--pdfName">発注履歴PDF</span>
+        <span class="history__col history__col--orderUser">発注者</span>
+        <span class="history__col history__col--orderPieces">発注数</span>
+      </div>
+
+      <!-- ここにJSで明細を描画 -->
+      <div id="items-order-history"></div>
+    </section>
+
+  </main>
+  <footer class="main-footer">
+    <div class="footerBtn-wrap">
+      <a class="footer-btn" href="top.html">TOPへ</a>
+    </div>
+  </footer>
+    <script src="js/load-header.js"></script>
+</body>
+</html>

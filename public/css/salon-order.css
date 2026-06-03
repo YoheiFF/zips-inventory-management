@@ -1,0 +1,240 @@
+/* カテゴリタブの横スクロール表示 */
+.category-tabs {
+    display: flex;
+    overflow-x: auto;
+    /* 横スクロール可能にする */
+    white-space: nowrap;
+    /* 折り返ししない */
+    gap: 10px;
+    padding: 10px;
+    background-color: var(--Base);
+    scrollbar-width: none;
+}
+
+/* Chromeでスクロールバーを非表示に */
+.category-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+/* カテゴリボタンのデザイン */
+.category-button{
+    background-color: var(--footerBtn);
+    border: none;
+    padding: 14px 20px;
+    border-radius: 5px;
+    color: #5C4B3B;
+    font-weight: bold;
+    font-size: 1.5em;
+    flex-shrink: 0;
+}
+
+/* ホバー時 */
+.category-button:hover {
+  background-color: var(--accent);      /* アクセント色 */
+  transform: translateY(-2px);          /* 少し浮く */
+}
+
+/* 押下時 */
+.category-button:active {
+  background-color: var(--accent-strong);
+  transform: translateY(0);             /* 元に戻す */
+}
+
+/* 選択状態（例: class="active" を付与） */
+.category-button.active {
+  border: 3px solid red; /* ★ 赤線 */
+}
+
+/* 商品リストのコンテナ */
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 4%;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+/* 商品カード全体のスタイル */
+.item {
+    background-color: var(--bodyObjectBase);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 30%;
+    min-width: 140px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+
+    /* ▼バッジの基準にする＆重なり/レイアウト安定化 */
+    position: relative;        /* ← これ必須 */
+    box-sizing: border-box;
+    padding-top: 40px;         /* ← バッジの分だけ上に余白（重なりを避けたい場合） */
+}
+
+/* 商品数を3の倍数に保つための見えない埋めカード */
+.item.placeholder {
+    visibility: hidden;
+}
+
+/* 商品画像の基本サイズ */
+.item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* PCサイズ時は画像を大きく表示 */
+@media (min-width: 768px) {
+    .item img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* 商品名のスタイル */
+.item-name {
+    margin: 10px 0;
+    color: #5C4B3B;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* 左上のカテゴリバッジ */
+.item .cat-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 6px;
+  background: #F2D1B3;
+  color: #5C4B3B;
+  border: 1px solid #DDD2C0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06) inset;
+  pointer-events: none;         /* クリック操作を邪魔しない */
+  max-width: calc(100% - 16px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 数量ボタンとカウント表示の横並び */
+.quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 数量ボタン（＋・−）の見た目 */
+.quantity button {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    border: none;
+    background-color: #F2D1B3;
+    color: white;
+    border-radius: 50%;
+}
+
+/* 数量表示（数字）の見た目 */
+.quantity span {
+    font-size: 1.5em;
+    color: #5C4B3B;
+    font-weight: bold;
+}
+
+/* トップへ戻るボタンの固定位置とスタイル */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    background-color: #D6A97A;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+/* トップへ戻るボタンにマウスを乗せたときの効果 */
+.back-to-top:hover {
+    opacity: 0.8;
+}
+
+.cart-button {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 998;
+  width: 48px;
+  height: 48px;
+  background-color: #D6A97A;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  padding: 0;
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: white;
+  font-size: 0.7em;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  min-width: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.cart-button i {
+  font-size: 1.5em; /* ← アイコン自体のサイズを明示 */
+  color: white;
+}
+
+/* カートボタンにマウスを乗せたときの効果 */
+.cart-button:hover {
+    opacity: 0.8;
+}
+
+/* 左上のカテゴリバッジ */
+.item .cat-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 6px;
+  background: #f2e9d8;         /* お好みで色変更OK */
+  color: #6b5432;
+  border: 1px solid #e3d6c2;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06) inset;
+  pointer-events: none;         /* クリック操作を邪魔しない */
+  max-width: calc(100% - 16px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

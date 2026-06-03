@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>発注完了画面</title>
+
+  <!-- 共通CSS → ページCSS の順 -->
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/order-complete.css" />
+  <link rel="icon" href="img/art_the_line_logo.png">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script defer src="js/load-header.js"></script>
+  <script defer src="js/order-complete.js"></script>
+</head>
+<body>
+  <div id="header-container"></div>
+  <main>
+    <div class="complete-grid">
+      <section class="panel panel--message">
+        <p class="msg-leading">
+          発注（在庫更新）が完了しました。<br>
+          下記PDFをクリックし、内容をご確認ください。
+        </p>
+        <p class="pdf-line">
+          <a id="pdfLink" class="pdf-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+        </p>
+        <p class="note">
+          ※ 発注内容は「発注履歴一覧」からもご確認いただけます。
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+        <div class="footerBtn-wrap">
+      <a class="footer-btn" href="top.html">TOPへ</a>
+    </div>
+  </footer>
+    <script src="js/load-header.js"></script>
+  <script>
+    loadHeader("発注完了画面");
+  </script>
+</body>
+</html>

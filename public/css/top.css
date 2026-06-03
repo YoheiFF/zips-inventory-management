@@ -1,0 +1,34 @@
+/* TOPメニューのレイアウト */
+.top-menu {
+  display: grid;
+  grid-template-columns: 1fr; /* デフォルトは1列 */
+  gap: 24px;
+  margin: 16px auto;          /* 常に左右中央寄せ */
+  justify-items: center;
+  width: 100%;
+}
+
+/* タブレット以上では2列固定 */
+@media (min-width: 600px) {
+  .top-menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* PC以上は幅を画面の8割にして中央寄せ */
+@media (min-width: 1024px) {
+  .top-menu {
+    width: 80vw;              /* 画面の8割を使用 */
+    max-width: 1200px;        /* 広がりすぎ防止（任意） */
+  }
+}
+
+/* TOP画面のボタン */
+.top-menu .mainBtn {
+  width: 100%;                /* セルいっぱいに広げる */
+  max-width: 280px;           /* ボタン幅の上限 */
+  min-height: 80px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 24px;
+}

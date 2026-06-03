@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>商品フォーム画面</title>
+
+  <!-- 共通CSS → ページCSS の順 -->
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/item-form.css" />
+  <link rel="icon" href="img/art_the_line_logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script defer src="js/load-header.js"></script>
+  <script defer src="js/item-form.js"></script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+  <main class="product-form">
+    <button type="button" class="mainBtn" id="btnBack"><i class="bi bi-arrow-left"></i> 戻る</button>
+    <section class="form-card">
+      <div class="form-grid">
+        <!-- 上部 -->          
+        <label>▽画像クリックで編集</label>
+        <div class="image-pane">
+          <div class="image-box" id="imagePreview">写真を選択</div>
+          <input type="file" id="imageInput" accept="image/*" style="display:none;">
+          <div class="field">
+            <input id="itemName" type="text" placeholder="商品名を入力">
+          </div>
+        </div>
+
+        <!-- 下部 -->
+        <div class="fields-pane">
+          <div class="field">
+            <label for="companySelect">会社</label>
+            <select id="companySelect">
+              <option value="">会社を選択</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="categorySelect">カテゴリ</label>
+            <select id="categorySelect">
+              <option value="">カテゴリを選択</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="price">金額</label>
+            <input id="price" type="number" placeholder="金額を入力">
+          </div>
+
+          <div class="field">
+            <label for="stock">在庫数</label>
+            <input id="stock" type="number" placeholder="現在の在庫数を入力">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="footerBtn-wrap">
+      <button type="button" class="footer-btn" id="btnSubmit">登録</button>
+      <button type="button" class="footer-btn" id="btnDelete" style="display:none;">削除</button>
+    </div>
+  </footer>
+</body>
+
+</html>
