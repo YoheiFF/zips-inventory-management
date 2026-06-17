@@ -2,7 +2,9 @@ services:
   mysql:
     image: mysql:8.0
     container_name: zips-mysql-prod
-    restart: always
+    restart: on-failure:5
+    mem_limit: 256m
+    memswap_limit: 256m
     environment:
       MYSQL_ROOT_PASSWORD: zips_root_pass_prod
       MYSQL_DATABASE: Zips
@@ -14,9 +16,17 @@ services:
     volumes:
       - ~/zips-mysql-data:/var/lib/mysql
       - ./mysql-init/01_init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
-    command: ["--default-authentication-plugin=mysql_native_password"]
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --innodb_buffer_pool_size=64M
+      - --innodb_log_buffer_size=8M
+      - --max_connections=50
+      - --key_buffer_size=16M
+      - --tmp_table_size=16M
+      - --max_heap_table_size=16M
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pzips_root_pass_prod"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s

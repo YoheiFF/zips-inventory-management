@@ -18,7 +18,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // 本番HTTPS環境ではtrue
+    secure: process.env.COOKIE_SECURE === 'true', // HTTPS運用時は COOKIE_SECURE=true を .env に設定
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000 // 24時間
   }
