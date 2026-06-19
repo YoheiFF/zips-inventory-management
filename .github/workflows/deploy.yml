@@ -23,4 +23,6 @@ jobs:
             git fetch origin
             git reset --hard origin/main
             npm install --omit=dev
-            pm2 restart zips
+            docker compose -f docker-compose.prod.yml up -d
+            pm2 restart zips 2>/dev/null || pm2 start ecosystem.config.js --env production
+            pm2 save
