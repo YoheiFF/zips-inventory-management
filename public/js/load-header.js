@@ -22,10 +22,6 @@ function hideLoading(force = false) {
   }
 }
 
-// ===== 画面初期表示：最初だけ表示してDOM準備できたら消す（任意） =====
-showLoading();
-window.addEventListener("DOMContentLoaded", () => hideLoading(true));
-
 // ===== リンククリックで表示（ページ遷移） =====
 document.addEventListener("click", (e) => {
   const a = e.target.closest("a");
